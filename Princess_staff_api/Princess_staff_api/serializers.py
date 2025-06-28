@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from employees.models import StaffBase, Manager, Intern
+from employees.models import StaffBase, Manager, Intern, Address
 
 class StaffBaseSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +17,9 @@ class InternSerializer(serializers.ModelSerializer):
     class Meta:
         model = Intern
         fields = ['intern_id', 'intern_name', 'intern_email', 'intern_department', 'internship_end', 'mentor']
+
+class AddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = ['id', 'street_address', 'city', 'state', 'country', 'manager', 'intern']
+

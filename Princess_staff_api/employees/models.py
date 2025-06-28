@@ -9,7 +9,9 @@ class StaffBase(models.Model):
     
     def __str__(self):
         return super().__str__()
-        
+    
+    def get_role():
+        return "Staff Member"
 
     class Manager(models.Model):
         manager_id = models.AutoField(primary_key=True)
@@ -20,6 +22,9 @@ class StaffBase(models.Model):
     
         def _str_(self):
             return f"{self.manager_id},  {self.manager_name}, {self.manager_email}, {self.manager_department}"
+        
+        def get_role(StaffBase):
+            return "Manager"
 
     class Intern(models.Model):
         intern_id = models.AutoField(primary_key=True)
@@ -32,3 +37,18 @@ class StaffBase(models.Model):
         def _str_(self):
             return f"{self.intern_id},  {self.intern_name}, {self.intern_email}, {self.intern_department}"
         
+        def get_role(StaffBase):
+            return "Intern"
+
+class Address:
+    address_id = models.AutoField(primary_key=True)
+    street_address = models.CharField(max_length=255)
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
+    manager = models.ForeignKey(Manager, on_delete=models.CASCADE)
+    intern = models.ForeignKey(Intern, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.address_id},{self.street_address}, {self.city}, {self.state}, {self.country}"
+    
