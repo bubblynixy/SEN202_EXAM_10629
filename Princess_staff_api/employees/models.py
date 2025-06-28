@@ -6,6 +6,10 @@ class StaffBase(models.Model):
     email = models.EmailField(unique=True)
     address = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=20)
+    
+    def __str__(self):
+        return super().__str__()
+        
 
     class Manager(models.Model):
         manager_id = models.AutoField(primary_key=True)
@@ -28,5 +32,3 @@ class StaffBase(models.Model):
         def _str_(self):
             return f"{self.intern_id},  {self.intern_name}, {self.intern_email}, {self.intern_department}"
         
-        
-
